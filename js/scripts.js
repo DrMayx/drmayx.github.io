@@ -34,14 +34,15 @@ function pickLocation(){
 }
 
 function keyPressed(){
+    console.log(keyCode);
     if(s.alive) {
-        if (keyCode === UP_ARROW && s.yspeed!=1) {
+        if ((keyCode === UP_ARROW || keyCode === 87 )&& s.yspeed!=1) {
             s.dir(0, -1);
-        } else if (keyCode === DOWN_ARROW && s.yspeed!=-1) {
+        } else if ((keyCode === DOWN_ARROW || keyCode === 83 )&& s.yspeed!=-1) {
             s.dir(0, 1);
-        } else if (keyCode === RIGHT_ARROW && s.xspeed!=-1) {
+        } else if ((keyCode === RIGHT_ARROW || keyCode === 68 ) && s.xspeed!=-1) {
             s.dir(1, 0);
-        } else if (keyCode === LEFT_ARROW && s.xspeed!=1) {
+        } else if ((keyCode === LEFT_ARROW || keyCode === 65 )&& s.xspeed!=1) {
             s.dir(-1, 0);
         }
     }
