@@ -34,7 +34,6 @@ function pickLocation(){
 }
 
 function keyPressed(){
-    console.log(keyCode);
     if(s.alive) {
         if ((keyCode === UP_ARROW || keyCode === 87 )&& s.yspeed!=1) {
             s.dir(0, -1);
