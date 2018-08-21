@@ -21,12 +21,19 @@ var draw = function(){
     // }
 };
 var addNoteButton = function() {
+    var navigation = document.createElement("div");
+    navigation.id="navigation";
     var button = document.createElement("input");
     button.onclick=createNewNote;
     button.type="button";
-    button.id="createNewNoteButton";
     button.value="Create new note";
-    document.getElementById("panel").appendChild(button);
+    navigation.appendChild(button);
+    var backButton = document.createElement("input");
+    backButton.type="button";
+    backButton.value="Back";
+    backButton.onclick=goBack;
+    navigation.appendChild(backButton);
+    document.getElementById("panel").appendChild(navigation);
 };
 
 var createNewNote = function(){
@@ -53,3 +60,6 @@ var getEditedNote = function (){
     return document.getElementById("titleEdit").parentElement.parentElement.parentElement.parentElement.parentElement;
 }
 
+function goBack(){
+    history.go(-1);
+}

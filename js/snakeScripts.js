@@ -73,7 +73,6 @@ function refreshPage(){
 }
 
 function goBack(){
-    console.log("qweqwe")
     history.go(-1);
 }
 
