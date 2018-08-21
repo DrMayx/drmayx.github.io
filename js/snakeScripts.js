@@ -1,3 +1,5 @@
+"use strict";
+
 var s;
 var scl = 20;
 var food;

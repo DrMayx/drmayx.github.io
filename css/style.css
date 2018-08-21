@@ -1,11 +1,5 @@
-#header{
-
-}
-
-#main{
-
-}
-
-#footer{
-
+body{
+    width: 99%;
+    height: 100%;
+    background-color: cornflowerblue;
 }
