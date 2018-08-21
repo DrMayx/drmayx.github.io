@@ -3,3 +3,18 @@ body{
     height: 100%;
     background-color: cornflowerblue;
 }
+
+#createNewNoteButton{
+    display: block;
+}
+
+.note{
+    display: inline-block;
+    width: 200px;
+    margin: 1px;
+    border: 2px solid black;
+}
+
+.note:hover{
+    border: 2px solid rgba(0,100,255, .4);
+}
