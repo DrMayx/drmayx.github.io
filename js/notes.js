@@ -52,14 +52,6 @@ var getNote = function(noteId){
     return undefined;
 };
 
-var getEditedNoteId = function(){
-    return getEditedNote().id;
-}
-
-var getEditedNote = function (){
-    return document.getElementById("titleEdit").parentElement.parentElement.parentElement.parentElement.parentElement;
-}
-
 function goBack(){
     history.go(-1);
 }
