@@ -5,13 +5,17 @@
     <title>Snake DrMayx</title>
     <script src="js/p5.js"></script>
     <script src="js/addons/p5.dom.js"></script>
-    <script src="js/addons/p5.sound.js"></script>
     <script src="js/snakeScripts.js"></script>
     <script src="js/Snake.js"></script>
 </head>
 <body>
 
     <h2>Move using WSAD keys or arrows. Eat apples and have fun ! :)</h2>
+    <p><b><i>To remove your username when exiting the page please use the 'BACK' button.</i></b></p>
+    <label>Username: </label><input type="text" id="UserNamePanel" placeholder="UserName">
+    <input type="button" onclick='getStarted()' value="GO!">
+    <input type="button" onclick='goBack()' value="BACK">
+    <p id="name"></p>
 
 </body>
 </html>
