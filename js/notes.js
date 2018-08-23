@@ -11,15 +11,9 @@ window.onload = function (){
     panel.appendChild(paragraph);
     panel.appendChild(usage);
     addNoteButton();
-    //window.addEventListener("keypress", this.handleKeyPress);
+    restoreNotes();
 };
 
-var draw = function(){
-    //background(100,200,237);
-    // for(var i = 0; i<notes.length; i++){
-    //     notes[i].show();
-    // }
-};
 var addNoteButton = function() {
     var navigation = document.createElement("div");
     navigation.id="navigation";
@@ -37,10 +31,10 @@ var addNoteButton = function() {
 };
 
 var createNewNote = function(){
-    console.log("creating new note...");
     var n = new Note();
     n.show();
     notes.push(n);
+    saveAllNotes();
 };
 
 var getNote = function(noteId){
@@ -54,4 +48,67 @@ var getNote = function(noteId){
 
 function goBack(){
     history.go(-1);
+}
+
+function saveAllNotes(){
+    let data = getAllNotes();
+    localStorage.setItem("notes", data);
+}
+
+function getAllNotes() {
+    let notes = document.getElementsByClassName("note");
+    if(notes.length<1){
+        return "";
+    }
+    let notesString = "[";
+    for(let i=0; i<notes.length; i++){
+        notesString += getNotesData(notes[i]) + addCommaIfNotLast(i, notes.length);
+    }
+    return notesString + "]";
+}
+
+function addCommaIfNotLast(i, len) {
+    if(i!==len-1){
+        return ",";
+    }
+    return "";
+}
+
+function getNotesData(noteHTML) {
+    let note, id, title, description, color;
+    id = noteHTML.id;
+    note = getNote(id);
+    title = note.title;
+    description = note.desc;
+    color = note.currentColor;
+    return JSON.stringify({
+        id: id,
+        title: title,
+        description: description,
+        currentColor: color
+    });
+}
+
+function restoreNotes() {
+    let JSONnotes = localStorage.getItem("notes")
+    if( JSONnotes === null || JSONnotes === ""){
+        return;
+    }
+    let notesFromJSON = JSON.parse(JSONnotes);
+
+    //console.log(JSONnotes);
+    for(let i=0; i<notesFromJSON.length; i++) {
+        let n = new Note();
+        n.id = notesFromJSON[i].id;
+        n.currentColor = notesFromJSON[i].currentColor-1;
+        n.desc = notesFromJSON[i].description;
+        n.title = notesFromJSON[i].title;
+        n.show();
+        notes.push(n);
+        let noteHTML = document.getElementById(n.id);
+        let button = noteHTML.getElementsByTagName("button")[0];
+        n.changeColor.call(button);
+        n.editData.call(noteHTML);
+        n.changeData.call(noteHTML, noteHTML);
+    }
 }

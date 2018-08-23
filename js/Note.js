@@ -4,11 +4,11 @@ function Note(){
     this.title = "Title";
     this.desc = "Description ...";
     this.colors = [
+        new Color("none", "rgba(0,0,0,0)", "black"),
         new Color("whitish", 'rgba(255,255,255,.4)',"black"),
         new Color("more_white", 'rgba(255,255,255,.8)', "black"),
         new Color("purple", 'rgba(150,0,150,.6)', "black"),
-        new Color("cyan", "rgba(0,130,200,.8)", "white"),
-        new Color("none", "rgba(0,0,0,0)", "black")
+        new Color("cyan", "rgba(0,130,200,.8)", "white")
     ];
     this.currentColor = 0;
     this.id;
@@ -62,16 +62,21 @@ function Note(){
     };
 
     this.changeData = function (event){
-        if(event != null){
+        let note;
+        if(event instanceof MouseEvent){
+            note = getCurrentNote(event);
             event.preventDefault();
+        }else{
+            note = event;
         }
-        let note = getCurrentNote(event);
+
         let noteObject = getNote(note.id);
         if(!noteEdited){
             if(note) {
                 if (confirm("Delete " + note.title + " ?")) {
                     let panel = document.getElementById("panel");
                     panel.removeChild(note);
+                    saveAllNotes();
                 }
             }
             return;
@@ -89,6 +94,7 @@ function Note(){
         title.innerHTML = "<p>" + noteObject.title + "</p>";
         desc.innerHTML = "<p>" + noteObject.desc + "</p>";
         noteEdited = false;
+        saveAllNotes();
     };
 
     let getCurrentNote = function (event){
@@ -102,7 +108,6 @@ function Note(){
 
     this.handleKeyPress = function (event){
         if (event.keyCode == 13){
-            console.log(this);
             event.stopPropagation();
             this.value += "<br>";
         }
@@ -111,8 +116,11 @@ function Note(){
     this.changeColor = function(){
         let note = this.parentElement.parentElement;
         let noteObject = getNote(note.id);
-        let color = noteObject.colors[(noteObject.currentColor++)%noteObject.colors.length];
+        noteObject.currentColor = (noteObject.currentColor + 1)%noteObject.colors.length;
+        let currColor = (noteObject.currentColor);
+        let color = noteObject.colors[currColor];
         note.style.backgroundColor=color.color;
         note.style.color=color.fontColor;
+        saveAllNotes();
     }
 }
