@@ -56,7 +56,7 @@ function Snake(){
     }
 
     this.die = function(){
-        console.log("you dieded");
+        addAndTrimScores();
         this.alive = false;
         this.xspeed = 0;
         this.yspeed = 0;
