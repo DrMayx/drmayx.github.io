@@ -1,1 +1,1 @@
-asdasdasdadsadadadqweqeda123123
+[{username: mack, score: 10}]

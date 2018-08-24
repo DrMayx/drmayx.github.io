@@ -22,7 +22,7 @@ function getStarted() {
 
 function setup(){
     createCanvas(600, 600);
-    showHigscores();
+    showHighscores();
     let nameTmp = localStorage.getItem("username");
 
     if(nameTmp !== null && nameTmp !== ""){
@@ -101,10 +101,23 @@ function goBack(){
     history.go(-1);
 }
 
-function showHigscores(){
+function showHighscores(){
     let path = location.pathname.substr(1).replace("snake.html", "static/highscores/highscores.txt");
     console.log(path);
+    let dataFromFile;
     fetch(path)
         .then(response => response.text())
-        .then(text => console.log(text))
+        .then(text => createTable(text));
+}
+
+function createTable(data){
+    console.log(data);
+    let table = document.createElement("table");
+    let dataRow = document.createElement("tr");
+    let dataCol = document.createElement("td");
+    dataCol.innerText = data;
+    dataRow.appendChild(dataCol);
+    table.appendChild(dataRow);
+    document.body.appendChild(table);
+
 }
