@@ -22,7 +22,7 @@ function getStarted() {
 
 function setup(){
     createCanvas(600, 600);
-
+    showHigscores();
     let nameTmp = localStorage.getItem("username");
 
     if(nameTmp !== null && nameTmp !== ""){
@@ -60,7 +60,7 @@ function pickLocation(){
 }
 
 function keyPressed(){
-    if(s.alive && started) {
+    if(s!== undefined && s.alive && started) {
         if ((keyCode === UP_ARROW || keyCode === 87 )&& s.yspeed!=1) {
             s.dir(0, -1);
         } else if ((keyCode === DOWN_ARROW || keyCode === 83 )&& s.yspeed!=-1) {
@@ -101,3 +101,10 @@ function goBack(){
     history.go(-1);
 }
 
+function showHigscores(){
+    let path = location.pathname.substr(1).replace("snake.html", "static/highscores/highscores.txt");
+    console.log(path);
+    fetch(path)
+        .then(response => response.text())
+        .then(text => console.log(text))
+}
