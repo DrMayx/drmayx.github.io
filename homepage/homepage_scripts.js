@@ -21,6 +21,7 @@ function toggleActivityTracker(){
 	dashboard.hidden = dashboardHidden;
 	let activityTracker = document.getElementById("activity-tracker");
 	activityTracker.hidden = !dashboardHidden;
+	document.getElementById("activity-tracker-button").innerHTML = dashboardHidden ? "Dashboard" : "Activity Tracker";
 	if(dashboardHidden) populateActivities();
 }
 
