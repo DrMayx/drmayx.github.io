@@ -1,0 +1,40 @@
+body, html {
+	background-color:rgb(0,0,0);
+    background-image:url('img/bg2.jpg');
+	background-repeat:no-repeat;
+	background-position:center;
+    height:100%;
+    min-height:100%;
+    margin:0;
+    padding:0;
+}
+
+#panel {
+    background:rgba(27,27,27,.6);
+    border:1px solid rgba(27,27,27,.6);
+    border-top:1px solid rgba(27,27,27,.6);
+    border-bottom:1px solid rgba(27,27,27,.6);
+    position:absolute;
+    top:0;
+    bottom:0;
+	left:25%;
+    width:50%;
+    height:390px;
+    margin:auto;
+    box-shadow:#060606 0 0 10px;
+}
+#tpb {
+	position:absolute;
+	right:10px;
+	bottom:10px;
+	text-align:right;
+}
+
+#gora {
+	border:1px solid rgba(27,27,27,.6);
+    border-top:1px solid rgba(27,27,27,.6);
+    border-bottom:1px solid rgba(27,27,27,.6);
+	position:absolute;
+	width:99.9%;
+	box-shadow:#060606 0 0 10px;
+}
