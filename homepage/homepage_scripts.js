@@ -324,7 +324,7 @@ function prepareSearchBar(){
 function passToURL(event){
 	if (event.keyCode === 13) {
 		event.preventDefault();
-		window.location = "https://www.google.com/search?q=" + document.getElementById("customSearchbar").value;
+		window.location = "https://duckduckgo.com/?t=canonical&q=" + document.getElementById("customSearchbar").value + "&atb=v232-2&ia=web";
 	}
 }
 
