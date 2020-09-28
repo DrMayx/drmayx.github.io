@@ -344,8 +344,8 @@ function formatDate(date){
 
 function prepareSearchBar(){
 	let searchBar = document.getElementById("customSearchbar");
-	searchBar.addEventListener("keyup", passToURL);
-	searchBar.focus();
+	//searchBar.addEventListener("keyup", passToURL);
+	//searchBar.focus();
 }
 
 function passToURL(event){
