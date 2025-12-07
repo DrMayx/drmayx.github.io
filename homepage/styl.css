@@ -11,6 +11,13 @@ body, html {
 	background-size: 100% 100%;
 }
 
+body#praca.praca
+{
+    background-image:url('img/praca_bg.png');
+    background-repeat:no-repeat;
+	background-position:center;
+}
+
 
 .panel {
 	border-radius:5px;
@@ -21,9 +28,10 @@ body, html {
     bottom:0;
 	left: 35%;
     width:30%;
-    height:45vh;
+    height:fit-content;
     margin:auto;
     box-shadow:#060606 0 0 10px;
+    padding-bottom:35px;
 }
 .tpb {
 	position:absolute;
